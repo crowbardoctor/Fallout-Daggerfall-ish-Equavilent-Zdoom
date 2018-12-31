@@ -1,0 +1,13 @@
+Patch File for DeHackEd v3.0
+# Created with WhackEd4 1.2.0 BETA
+# Note: Use the pound sign ('#') to start comment lines.
+
+Doom version = 21
+Patch format = 6
+
+
+Weapon 7 (Ripper)
+Ammo type = 2
+
+Ammo 3 (Rockets)
+Max ammo = 200
