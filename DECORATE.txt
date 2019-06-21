@@ -106,6 +106,7 @@ Actor TABLA 330
 
 Actor TABB 331
 {
+  scale 4.0
   +FloorClip
   +Solid
   Height 30
@@ -727,7 +728,7 @@ actor MedKit : HealthPickup 7012
     }
 }
 
- ACTOR Brahmin 20045
+ ACTOR Brahmin 20046
 {
   //$Category Monsters
   Game Doom
@@ -837,7 +838,7 @@ ACTOR Ripp : Chainsaw replaces Chainsaw
  Weapon.AmmoUse 2
  }
  
- ACTOR PowerFist : Weapon 20046
+ ACTOR PowerFist : Weapon 20048
 {
   Weapon.SelectionOrder 3700
   Weapon.Kickback 100

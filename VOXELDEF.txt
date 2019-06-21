@@ -5,7 +5,7 @@ TABLA =  "TABLA"
 
 TABB =  "TABBA"
 {
-   Scale = 2.0
+   Scale = 0.5
 }
 
 CHAAA =  "CHAAA"
