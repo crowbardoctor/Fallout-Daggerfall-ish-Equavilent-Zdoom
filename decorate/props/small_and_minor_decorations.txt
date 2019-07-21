@@ -1,0 +1,69 @@
+ACTOR Stone1 20049
+{
+  Radius 5
+  Height 5
+  Tag "Stone 1"
+  +SOLID
+  States
+  {
+  Spawn:
+    STO1 A -1
+    Stop
+  }
+}
+
+ACTOR Stone2 20050
+{
+  Radius 5
+  Height 5
+  Tag "Stone 2"
+  +SOLID
+  States
+  {
+  Spawn:
+    STO2 A -1
+    Stop
+  }
+}
+
+ACTOR Stone3 20051
+{
+  Radius 5
+  Height 5
+  Tag "Pipe 3"
+  +SOLID
+  States
+  {
+  Spawn:
+    PIP3 A -1
+    Stop
+  }
+}
+
+ACTOR Stone4 20052
+{
+  Radius 5
+  Height 5
+  Tag "Stone 4"
+  +SOLID
+  States
+  {
+  Spawn:
+    PIP4 A -1
+    Stop
+  }
+}
+
+ACTOR Stone5 20053
+{
+  Radius 5
+  Height 5
+  Tag "Stone 5"
+  +SOLID
+  States
+  {
+  Spawn:
+    PIP5 A -1
+    Stop
+  }
+}
