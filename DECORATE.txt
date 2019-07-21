@@ -1,4 +1,5 @@
 #include "decorate/props/Chairs.txt"
+#include "decorate/props/small_and_minor_decorations.txt"
 #include "decorate/Monsters.txt"
 #include "decorate/Weapons.txt"
 
