@@ -1,0 +1,10 @@
+Ammo 3 (Rockets)
+Max ammo = 15
+
+Ammo 2 (Cell)
+Max ammo = 180
+
+max armor = 100
+
+Weapon 7 (Chainsaw)
+Ammo type = 2
