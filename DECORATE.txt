@@ -1,8 +1,3 @@
-#include "decorate/props/Chairs.txt"
-#include "decorate/props/small_and_minor_decorations.txt"
-#include "decorate/Monsters.txt"
-#include "decorate/Weapons.txt"
-
 Actor DoomPlayer2 : DoomPlayer replaces DoomPlayer
 {
 Player.StartItem "Fist~"
@@ -21,6 +16,19 @@ Actor Fist~ : Fist replaces Fist
 Weapon.PreferredSkin "FistMarine" //Hurr hurr hurr
 }
 
+Actor Chair 2700
+{
+  +FloorClip
+  +Solid
+  Height 30
+  Radius 15
+  States
+  {
+  Spawn:
+    CHAI A -1
+    Stop
+  }
+}
 ACTOR Pipe1 325
 {
   Radius 16
@@ -107,7 +115,6 @@ Actor TABLA 330
 
 Actor TABB 331
 {
-  scale 4.0
   +FloorClip
   +Solid
   Height 30
@@ -116,6 +123,23 @@ Actor TABB 331
   {
   Spawn:
     TABB A -1
+    Stop
+  }
+}
+
+Actor CHAAA 332
+{
+game Doom
+ //$Category Decorations
+//$Title Chair 1
+  +FloorClip
+  +Solid
+  Height 30
+  Radius 15
+  States
+  {
+  Spawn:
+    CHAA A -1
     Stop
   }
 }
@@ -149,6 +173,205 @@ Actor WAPCA 334
   }
 }
 
+ACTOR GiantRat 13200
+{
+  //$Category Monsters
+  Health 30
+  Speed 10
+  Radius 16
+  Height 24
+  Mass 50
+  Monster
+  +FLOORCLIP
+  SeeSound "rat/squeek"
+  DeathSound "rat/death"
+  ActiveSound "rat/active"
+  Obituary "%o was killed by a giant rat."
+  States
+  {
+  Spawn:
+    RATS A 10 A_Look
+    Loop
+  See:
+    RATS BBCCDDEE 2 A_Chase
+    Loop
+  Melee:
+    RATS F 4 A_FaceTarget
+    RATS G 4 A_PlaySound ("Rat/Squeek")
+    RATS H 4 A_CustomMeleeAttack (2, "Rat/Bite", "none")
+    RATS A 8 A_FaceTarget
+    Goto See
+  Death:
+    RATS I 3 A_ScreamAndUnblock
+    RATS I 0 A_PlaySound ("Rat/Splat")
+    RATS JKL 3
+    RATS L -1
+    stop
+  Raise:
+    RATS LKJI 3
+    Goto See
+  }
+}
+
+ACTOR PigRat 13201
+{
+  //$Category Monsters
+  scale 1.1
+  Health 40
+  Speed 10
+  Radius 16
+  Height 24
+  Mass 50
+  Monster
+  +FLOORCLIP
+  SeeSound "rat/squeek"
+  DeathSound "rat/death"
+  ActiveSound "rat/active"
+  Obituary "%o was killed by a Pig rat."
+  States
+  {
+  Spawn:
+    PIGS A 10 A_Look
+    Loop
+  See:
+    PIGS BBCCDDEE 2 A_Chase
+    Loop
+  Melee:
+    PIGS F 4 A_FaceTarget
+    PIGS G 4 A_PlaySound ("Rat/Squeek")
+    PIGS H 4 A_CustomMeleeAttack (2, "Rat/Bite", "none")
+    PIGS A 8 A_FaceTarget
+    Goto See
+  Death:
+    PIGS I 3 A_ScreamAndUnblock
+    PIGS I 0 A_PlaySound ("Rat/Splat")
+    PIGS JKL 3
+    PIGS L -1
+    stop
+  Raise:
+    PIGS LKJI 3
+    Goto See
+
+  }
+}
+
+actor BloodTommygun : weapon 340
+{
+ game Doom
+ //$Category Weapons
+//$Title Tommygun
+inventory.pickupmessage "You picked up the Tommygun!"
+weapon.ammotype1 "TommAmmo"
+weapon.ammotype2 "TommAmmo"
+weapon.ammogive 50
+weapon.ammouse1 1
+weapon.ammouse2 1
+inventory.pickupsound "TOMPKP"
+decal Bulletchip
+Attacksound "DSTOMFR"
+Scale 0.6
+weapon.kickback 150
+states
+	{
+	spawn:
+		TOMM A 4
+		loop
+	select:
+		TOMG AA 0 A_raise
+		TOMG A 1 A_raise
+		loop
+	deselect:
+		TOMG AA 0 A_lower
+		TOMG A 1 A_lower
+		loop
+	ready:
+		TOMG A 1 A_weaponready
+		loop
+	fire:
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOMF A 2 bright A_firebullets(1,1,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOMF B 2 bright A_firebullets(1,1,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOMF C 2 bright A_firebullets(1,1,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOMF D 2 bright A_firebullets(1,1,1,6,"BulletPuff")
+	goto ready
+	AltFire:
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 E 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 F 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 G 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 H 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 I 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 J 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 K 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 L 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 K 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 J 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 I 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 H 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 G 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 F 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 E 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 D 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 C 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 B 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 A 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 B 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 C 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_GunFlash
+	NULL A 0 A_JumpifNoAmmo("Ready")
+	TOF2 D 2 bright A_firebullets(20,6,1,6,"BulletPuff")
+	NULL A 0 A_ReFire
+	goto ready
+	}
+}
 ACTOR TommAmmo : Ammo
 {
 	+INVENTORY.IGNORESKILL
@@ -165,6 +388,135 @@ ACTOR TommAmmo : Ammo
       TOMA A 1 Bright
       Loop
    }
+}
+
+actor Knife : Weapon 342
+{
+game Doom
+ //$Category Weapons
+//$Title Knife
+  Game Doom
+  Weapon.SelectionOrder 3700
+  Weapon.Kickback 100
+  Weapon.PreferredSkin "FistMarine" //Hurr hurr hurr
+  +WEAPON.WIMPY_WEAPON
+  +WEAPON.MELEEWEAPON
+  +NOEXTREMEDEATH
+  Obituary "$OB_MPFIST" // "%o was cut up by %k's knife."
+  States
+  {
+  Spawn:
+    KNFE A -1
+    loop
+  Ready:
+    KNFG A 1 A_WeaponReady
+    loop
+  Deselect:
+    KNFG A 1 A_Lower
+    loop
+  Select: 
+    KNFG A 1 A_Raise
+    loop
+  Fire:
+    KNFG B 2
+    KNFG C 4 A_CustomPunch (5,0,0,"KnifePuff")
+    KNFG D 2
+    KNFG E 2
+    KNFG F 2
+    KNFG E 2
+    KNFG D 2
+    KNFG A 2 A_ReFire
+    goto Ready
+  }
+}
+
+ACTOR KnifePuff
+{
+  +NOBLOCKMAP
+  +NOGRAVITY
+  +NOEXTREMEDEATH
+  +PUFFONACTORS
+  RenderStyle Translucent
+  Alpha 0.6
+  SeeSound "KnifeHitThing"
+  AttackSound "KnifeHitWall"
+  ActiveSound "KnifeMiss"
+  VSpeed 1
+  States
+  {
+  Spawn:
+    PUFF ABCD 4
+    Stop
+  }
+}  
+
+actor Machete : Weapon 20042
+{
+  Weapon.SelectionOrder 3800
+  Weapon.Kickback 100
+  +WEAPON.WIMPY_WEAPON
+  +WEAPON.MELEEWEAPON
+  +NOEXTREMEDEATH
+  Obituary "%o was cut up by %k's machete."
+  States
+  {
+  Spawn:
+    MHTE A -1
+    loop
+  Ready:
+    MHTG G 1 A_WeaponReady
+    loop
+  Deselect:
+    MHTG G 1 A_Lower
+    loop
+  Select: 
+    MHTG G 1 A_Raise
+    loop
+  Fire:
+    TNT1 A 0 A_Jump(128,"Fire4")
+    TNT1 A 0 A_Jump(128,"Fire3")
+    TNT1 A 0 A_Jump(128,"Fire2")
+    MHTG A 2 A_PlayWeaponSound("MacheteSwing")
+    MHTG B 2 
+    MHTG C 4 A_CustomPunch (30,0,0,"MachetePuff")
+    MHTG D 2
+    MHTG E 2
+    MHTG F 2
+    MHTG G 2
+    MHTG H 2 
+    MHTG I 2 
+    goto Ready
+  Fire2:
+    MHT2 A 2 A_PlayWeaponSound("MacheteSwing")
+    MHT2 B 2 
+    MHT2 C 4 A_CustomPunch (20,0,0,"MachetePuff")
+    MHT2 D 2
+    MHT2 E 2
+    MHT2 F 2
+    MHT2 G 2
+    MHT2 H 2 
+    goto Ready
+  Fire3:
+    MHT3 A 2 A_PlayWeaponSound("MacheteSwing")
+    MHT3 B 2 
+    MHT3 C 4 A_CustomPunch (10,0,0,"MachetePuff")
+    MHT3 D 2
+    MHT3 E 2
+    MHT3 F 2
+    MHT3 G 2
+    TNT1 A 0 A_ReFire
+    goto Ready
+  Fire4:
+    MHT4 A 2 A_PlayWeaponSound("MacheteSwing")
+    MHT4 B 2 
+    MHT4 C 4 A_CustomPunch (10,0,0,"MachetePuff")
+    MHT4 D 2
+    MHT4 E 2
+    MHT4 F 2
+    MHT4 G 2
+    TNT1 A 0 A_ReFire
+    goto Ready            
+  }
 }
 
 ACTOR MachetePuff
@@ -282,7 +634,6 @@ actor Zombieman2 : Zombieman replaces Zombieman
   //$Category Monsters
   Game Doom
   obituary "%o was killed by a feral Ghoul."
-  scale 0.5
   health 30
   mass 90
   speed 10
@@ -554,6 +905,53 @@ ACTOR ASGZAmmo: Ammo
      Inventory.MaxAmount 16
 }
 
+Actor Flamer : Weapon 20045
+{
+  Inventory.PickupSound "misc/w_pkup"
+  Inventory.PickupMessage "You got the flamethrower! Time for a BBQ!"
+  Obituary "%o was killed by %k's flamethrower."
+  Weapon.AmmoType "Gas"
+  Weapon.AmmoGive 48
+  Weapon.AmmoUse 1
+  +Weapon.Explosive
+  States
+  {
+  Spawn:
+    WFLM A -1
+    Loop
+  Ready:
+    FLMG BCD 3 A_WeaponReady
+    Loop
+  Deselect:
+    FLMG A 1 A_Lower
+    Loop
+  Select:
+    FLMG A 1 A_Raise
+    Loop
+  Fire:
+    FLMG E 0 bright A_GunFlash
+    FLMG E 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+    FLMG F 1 bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
+    FLMG G 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+    FLMG E 0 bright A_GunFlash
+    FLMG E 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+    FLMG F 1 bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
+    FLMG G 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+    FLMG E 0 bright A_GunFlash
+    FLMG E 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+    FLMG F 1 bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
+    FLMG G 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+    FLMG H 2 bright A_ReFire
+    Goto Ready
+  Flash:
+    TNT1 A 2 A_Light1
+    TNT1 A 2 A_Light2
+    TNT1 A 1 A_Light1
+    TNT1 A 1 A_Light0
+    Stop
+  }
+}
+
 Actor FTFire
 {
   Radius 2
@@ -729,67 +1127,6 @@ actor MedKit : HealthPickup 7012
     }
 }
 
- ACTOR Brahmin 20046
-{
-  //$Category Monsters
-  Game Doom
-  obituary "%o was killed by a Brahmin."
-  scale 0.5
-  health 40
-  mass 90
-  speed 9
-  Radius 19
-  Height 62
-  painchance 200
-  seesound "fem/sight"
-  painsound "fem/pain"
-  deathsound "fem/death"
-  activesound "fem/active"
-  MONSTER
-  DamageType Poison
-  +FLOORCLIP
-  States
-  {
-   Spawn:
-    FSZK AB 10 A_Look
-    loop
-  See:
-    FSZK AABBCCDD 4 A_Chase
-    loop
-  Melee:
-    FSZK E 4 A_FaceTarget
-    FSZK F 8 A_CustomMeleeAttack (random (1, 5) *5, "KnifeHit", "skeleton/swing", poison)
-	//A_CustomMeleeAttack [(int damage [, str meleesound [, str misssound [, str damagetype [, bool bleed[, int poisonvalue[, int poisonduration[, int poisonperiod]]]]]])]
-    FSZK E 4
-    goto See
-  Pain:
-    FSZK G 3
-    FSZK G 3 A_Pain
-    goto See
-  Death:
-    FSZK H 5
-    FSZK I 5 A_Scream
-    FSZK J 5 A_NoBlocking
-    FSZK K 5
-    FSZK L 5
-    FSZK M 5
-    FSZK N -1
-    stop
-  XDeath:
-    FSZK O 5
-    FSZK P 5 A_XScream
-    FSZK Q 5 A_NoBlocking
-    FSZK RSTUV 5
-    FSZK W -1
-    stop
-  Raise:
-    FSZK MLKJIH 5
-    goto See
-  }
-}
-
- 
-
 ACTOR STMinigun : Weapon 20040
 {
 Weapon.AmmoType "Clip"
@@ -839,12 +1176,12 @@ ACTOR Ripp : Chainsaw replaces Chainsaw
  Weapon.AmmoUse 2
  }
  
- ACTOR PowerFist : Weapon 20048
+ ACTOR PowerFist : Weapon 20046
 {
   Weapon.SelectionOrder 3700
   Weapon.Kickback 100
   Obituary "$OB_MPFIST"
-  Tag "Power FIST"
+  Tag "$TAG_FIST"
   +WEAPON.MELEEWEAPON
   States
   {
