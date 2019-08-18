@@ -1,0 +1,24 @@
+TABLA =  "TABLA"
+{
+   Scale = 4.0
+}
+
+TABB =  "TABBA"
+{
+   Scale = 0.5
+}
+
+CHAAA =  "CHAAA"
+{
+   Scale = 3.0
+}
+
+COMA =  "COMA"
+{
+   Scale = 3.0
+}
+
+WAPCA =  "WAPCA"
+{
+   Scale = 3.0
+}

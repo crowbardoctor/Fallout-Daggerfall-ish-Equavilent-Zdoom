@@ -1,0 +1,30 @@
+Rat/Squeek	DSRAT
+Rat/Active	DSRATIDL
+DSRATDI1	DSRATDI1
+DSRATDI2	DSRATDI2
+$random Rat/Death	{ DSRATDI1 DSRATDI2 }
+
+Rat/Bite	DSRATBIT
+Rat/Splat	DSRATPOP
+
+satyr/sight dssatsit
+
+satyr/death dssatdth
+
+
+DSTOMFR DSTOMFR
+TOMPKP TOMPKP
+
+KnifeHitThing		DSKNIFE
+KnifeHitWall		DSKNIFE3	
+KnifeMiss		DSKNIFE2
+
+weapons/minigunfire DSMINIGN
+
+MacheteHitThing		DSMACHT2
+MacheteHitWall		DSMACHT3	
+MacheteSwing		DSMACHT1
+
+Flamethrower/Fire	FMTRFIRE
+Flamethrower/Hit	FMTRHIT
+Flamethrower/Flame	FMTRFLAM

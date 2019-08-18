@@ -1,0 +1,35 @@
+  // reloading of weapons
+
+script 999 (void)
+{
+if (GetPlayerInput (-1, INPUT_BUTTONS) & BT_RELOAD)
+	{
+	SetResultValue (1);
+	}
+else
+	{
+	SetResultValue (0);
+	}
+}
+
+script 998 (void)
+{
+	if (CheckWeapon("NewPistol") == 1)
+	{
+	int PISTOL_CLIP = (CheckInventory("PistolAmmo"));
+	GiveInventory("PistolAmmo", (CheckInventory("Clip")));
+	TakeInventory("Clip", ((GetAmmoCapacity("PistolAmmo")) - (PISTOL_CLIP)));
+	}
+	if (CheckWeapon("NewShotgun") == 1)
+	{
+	int SHOTGUN_CLIP = (CheckInventory("ShotgunAmmo"));
+	GiveInventory("ShotgunAmmo", (CheckInventory("Shell")));
+	TakeInventory("Shell", ((GetAmmoCapacity("ShotgunAmmo")) - (SHOTGUN_CLIP)));
+	}
+	if (CheckWeapon("NewSuperShotgun") == 1)
+	{
+	int SUPERSHOTGUN_CLIP = (CheckInventory("SuperShotgunAmmo"));
+	GiveInventory("SuperShotgunAmmo", (CheckInventory("Shell")));
+	TakeInventory("Shell", ((GetAmmoCapacity("SuperShotgunAmmo")) - (SUPERSHOTGUN_CLIP)));
+	}
+}

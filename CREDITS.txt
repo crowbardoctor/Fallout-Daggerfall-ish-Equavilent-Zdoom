@@ -1,0 +1,5 @@
+Submitted: Ghastly_dragon, crowbardoctor
+Decorate: Ghastly_dragon, crowbardoctor
+Sprites: Id Software, 3D Realms, JoeyTD, Sergeant_Mark_IV, crowbardoctor
+Sounds: Eriance, Interplay, Monolith
+Maps: crowbardoctor and Eskil

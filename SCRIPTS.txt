@@ -1,0 +1,51 @@
+#library "RELOAD"
+#include "zcommon.acs"
+
+int currentXP = 0;
+int currentLevel = 1;
+
+int xpToLevel[5] = { 0, 	// Unused
+					 200,	// Level 2
+					 400,	// Level 3
+					 800,	// Level 4
+					 1600 };	// Level 5
+
+// Refresh HUD	 
+script 1 ENTER
+{
+	HudMessage(s:"LEVEL ", d:currentLevel; HUDMSG_PLAIN, 1, CR_WHITE, 0.95, 0.05, 0);
+	
+	if (currentLevel < 5)
+		HudMessage(s:"XP: ", d:currentXP, s:"/", d:xpToLevel[currentLevel]; HUDMSG_PLAIN, 2, CR_WHITE, 0.95, 0.1, 0);
+	else
+		HudMessage(s:"XP: ", d:currentXP; HUDMSG_PLAIN, 2, CR_WHITE, 0.95, 0.1, 0);
+}
+
+// Increase XP and check for level up
+script 2 (int amount)
+{
+	currentXP = currentXP + amount;
+	Print(s:"GAINED ", d:amount, s:" XP");
+	
+	for (int i = 4; i >= currentLevel; i--)
+	{
+		if (currentXP >= xpToLevel[i])
+		{
+			Print(s:"LEVELED UP!");
+			currentLevel = i + 1;
+			break;
+		}
+	}
+	
+	ACS_Execute(1, 0,0,0,0);
+}
+
+ script "watchforspace" ENTER{
+   if (GetPlayerInput(-1,MODINPUT_BUTTONS) & BT_USE){
+      GiveInventory("CanPickUpItems",1);
+   }else{
+      GiveInventory("CantPickUpItems",1);
+   }
+   delay(1);
+   restart;
+  }

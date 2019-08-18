@@ -1,0 +1,13 @@
+{
+Class = DoomMarine
+Name = FistMarine
+Sprite = PLA1
+CrouchSprite = PL1C
+}
+
+{
+Class = PostalMarine
+Name = FistMarine //Hurr hurr hurr
+Sprite = PLA1
+CrouchSprite = PL1C
+}

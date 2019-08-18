@@ -1,0 +1,20 @@
+ACTOR HealthPickup2 : Inventory 7011 
+{
+  Inventory.DefMaxAmount
+  +INVENTORY.INVBAR
+}
+
+actor MedKit2 : HealthPickup2 7012
+{
+  health 25
+  inventory.maxamount 15
+  inventory.icon "I_MDKT"
+  inventory.pickupmessage "You picked up the Medkit."
+  +COUNTITEM
+  states
+  {
+  Spawn:
+    MEDK A -1
+    stop
+  }
+}
