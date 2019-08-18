@@ -1,2 +1,0 @@
-BORDERFLAT = "FLAT20"
-LOAD = Fallout_voxels.pk3

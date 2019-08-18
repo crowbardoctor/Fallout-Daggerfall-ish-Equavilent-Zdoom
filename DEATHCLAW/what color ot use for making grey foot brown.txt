@@ -1,3 +1,0 @@
-brown hex: 533F1F
-
-the grey color that sould get replaced with the color swapper tool hex: 4B4B4B
