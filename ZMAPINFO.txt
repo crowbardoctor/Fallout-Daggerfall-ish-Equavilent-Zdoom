@@ -27,6 +27,7 @@ gameinfo
 	borderflat = "XMETAL25"
 	infopage = "HELP"
 	swapmenu = true
+	dimcolor = "00 00 00"
 }
 
 clearskills
