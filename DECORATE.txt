@@ -20,6 +20,7 @@ Player.WeaponSlot 6, "PlasmaRifle~", "Railgun~", "UTNTFlamethrower"
 Actor Fist~ : Fist replaces Fist
 {
 Weapon.PreferredSkin "FistMarine"
++WEAPON.NOALERT
 }
 
 ACTOR Pipe1 325
@@ -94,6 +95,7 @@ ACTOR Pipe5 329
 
 Actor COMA 333
 {
+//$Title Computer
   +FloorClip
   +Solid
   Height 30
