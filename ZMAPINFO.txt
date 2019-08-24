@@ -120,7 +120,7 @@ cluster = 1}
 
 map map10 "Narvarro"
 {sky1 = HLSKY1, 0.0
-music = 08City.mp3
+music = 08City
 fallingdamage
 cluster = 1}
 
