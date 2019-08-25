@@ -65,17 +65,24 @@ ACSreturn = 3
 Key = d
 }
 
+clearepisodes
+
+episode ZMAP01
+{name = "Your Invasion"
+}
+
 map TITLEMAP "The Path to Perdition"
 {sky1 = HLSKY5, 0.0
 }
 
-map map01 "Vault 13 level 2&3"
+map zmap01 "Vault 13 level 2&3"
 {sky1 = HLSKY1, 0.0
 music = DESSERTW
 fallingdamage
-cluster = 1}
+cluster = 1
+next=zmap02}
 
-map map02 "Vault 13 level 3"
+map zmap02 "Vault 13 level 3"
 {sky1 = HLSKY1, 0.0
 music = F_ATRADE
 fallingdamage
@@ -130,7 +137,7 @@ next = "map09"
 //music = D_MAP07
 fallingdamage
 cluster = 1
-next=EndTitle}
+next=map08}
 
 cluster 1 {hub
 pic = TITLEPIC
